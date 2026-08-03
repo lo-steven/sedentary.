@@ -1,0 +1,240 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: Roboto, sans-serif;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: linear-gradient(
+        180deg,
+        #050761 0%,
+        #27A169 100%
+    );
+
+    color: white;
+
+    border-radius: 42px;
+
+    padding-top: 70px;
+}
+
+
+/* =========================
+   TITOLO
+========================= */
+
+.title {
+
+    font-family: "Crimson Text", serif;
+    font-size: 64px;
+    font-weight: 400;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   EMOJI
+========================= */
+
+.walker {
+
+    font-size: 64px;
+
+    margin-bottom: 70px;
+
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+.timer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 42px;
+
+    margin-bottom: 110px;
+
+}
+
+.time {
+
+    width: 130px;
+
+    text-align: center;
+
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 92px;
+    font-weight: 300;
+
+    color: white;
+
+}
+
+
+/* =========================
+   LINEA
+========================= */
+
+.divider {
+
+    width: 7px;
+    height: 125px;
+
+    background: white;
+
+    border-radius: 999px;
+
+}
+
+
+/* =========================
+   PULSANTE
+========================= */
+
+.startButton {
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    background: #DC3F3F;
+
+    color: white;
+
+    border: 5px solid #DC3F3F;
+
+    outline: 3px solid #DC3F3F;
+    outline-offset: 8px;
+
+    cursor: pointer;
+
+    font-family: Roboto, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+
+    transition:
+        transform .2s,
+        opacity .2s;
+
+}
+
+
+.startButton:active {
+
+    transform: scale(.96);
+
+}
+
+
+.startButton:hover {
+
+    opacity: .95;
+
+}
+
+
+/* =========================
+   SAFE AREA iPHONE
+========================= */
+
+@supports (padding: max(0px)) {
+
+    .app {
+
+        padding-top:
+            max(70px, env(safe-area-inset-top));
+
+        padding-bottom:
+            max(40px, env(safe-area-inset-bottom));
+
+    }
+
+}
+
+
+/* =========================
+   SCHERMI PICCOLI
+========================= */
+
+@media (max-height: 740px) {
+
+    .title {
+
+        font-size: 56px;
+
+    }
+
+    .walker {
+
+        font-size: 54px;
+
+        margin-bottom: 50px;
+
+    }
+
+    .timer {
+
+        margin-bottom: 80px;
+
+    }
+
+    .time {
+
+        font-size: 78px;
+
+    }
+
+    .divider {
+
+        height: 110px;
+
+    }
+
+    .startButton {
+
+        width: 170px;
+        height: 170px;
+
+        font-size: 28px;
+
+    }
+
+}
