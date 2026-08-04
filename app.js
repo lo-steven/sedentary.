@@ -361,3 +361,124 @@ function restoreRunningTimer() {
     );
 
 }
+/* ==========================================================
+    app.js
+    Parte 3/5
+========================================================== */
+
+
+/* ==========================================================
+    CLICK PULSANTE
+========================================================== */
+
+mainButton.addEventListener("click", async () => {
+
+    await requestNotificationPermission();
+
+    switch (state) {
+
+        /* --------------------------
+           Avvia 30 minuti
+        -------------------------- */
+
+        case STATES.READY_SIT:
+
+            state = STATES.RUNNING_SIT;
+
+            startTimer(SIT_SECONDS);
+
+            break;
+
+
+
+        /* --------------------------
+           Avvia 10 minuti
+        -------------------------- */
+
+        case STATES.READY_WALK:
+
+            state = STATES.RUNNING_WALK;
+
+            startTimer(WALK_SECONDS);
+
+            break;
+
+
+
+        /* --------------------------
+           Se il timer è già in corso
+           ignora il click
+        -------------------------- */
+
+        case STATES.RUNNING_SIT:
+
+        case STATES.RUNNING_WALK:
+
+            break;
+
+    }
+
+});
+
+
+
+/* ==========================================================
+    VISIBILITÀ PAGINA
+========================================================== */
+
+document.addEventListener("visibilitychange", () => {
+
+    if (document.hidden) return;
+
+    updateUI();
+
+});
+
+
+
+/* ==========================================================
+    FOCUS FINESTRA
+========================================================== */
+
+window.addEventListener("focus", () => {
+
+    updateUI();
+
+});
+/* ==========================================================
+    app.js
+    Parte 4/5
+========================================================== */
+
+
+/* ==========================================================
+    REGISTRA SERVICE WORKER
+========================================================== */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("sw.js");
+
+    });
+
+}
+
+
+/* ==========================================================
+    AVVIO APPLICAZIONE
+========================================================== */
+
+function init() {
+
+    loadState();
+
+    restoreRunningTimer();
+
+    updateUI();
+
+}
+
+
+init();
